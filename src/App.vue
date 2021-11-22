@@ -1,15 +1,31 @@
 <template>
   <div class="bg-bgcolor h-screen">
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <header>
+      <Navbar></Navbar>
+    </header>
+    <main>
+      <div id="nav">
+        <router-link to="/">Home</router-link>|
+        <router-link to="/about">About</router-link>
+      </div>
+      <router-view />
+    </main>
   </div>
 </template>
 
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+import Navbar from "@/components/Navbar.vue";
+
+@Options({
+  components: {
+    Navbar,
+  },
+})
+export default class App extends Vue {}
+</script>
+
 <style lang="scss">
-@import "tailwindcss/base";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
