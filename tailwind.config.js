@@ -12,6 +12,7 @@ module.exports = {
 			'button-text': {
 				css: {
 					fontSize: '24px',
+					fontWeight: '700',
 				},
 			},
 			'cat-text': {
