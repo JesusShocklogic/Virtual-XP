@@ -17,10 +17,12 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import Navbar from "@/components/Navbar.vue";
+import Input from "@/components/Input.vue";
 
 @Options({
   components: {
     Navbar,
+    Input,
   },
 })
 export default class App extends Vue {
