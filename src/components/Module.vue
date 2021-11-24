@@ -28,6 +28,7 @@ button {
   @apply px-3;
   @apply w-full;
   @apply bg-main;
+  @apply shadow-xl;
   @apply rounded-xl;
   @apply text-center;
   @apply prose-button-text;
