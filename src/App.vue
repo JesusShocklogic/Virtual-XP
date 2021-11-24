@@ -3,7 +3,8 @@
     <header>
       <Navbar></Navbar>
     </header>
-    <main>
+    <main class="p-4">
+      <Input label="Hello" v-model="inputValue"></Input>
       <div id="nav">
         <router-link to="/">Home</router-link>|
         <router-link to="/about">About</router-link>
@@ -22,7 +23,9 @@ import Navbar from "@/components/Navbar.vue";
     Navbar,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  inputValue = "World";
+}
 </script>
 
 <style lang="scss">
