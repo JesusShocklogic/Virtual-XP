@@ -10,7 +10,7 @@ import { Options, Vue } from "vue-class-component";
 @Options({
   props: {},
 })
-export default class Button extends Vue {}
+export default class Card extends Vue {}
 </script>
 
 <style scoped lang="postcss">

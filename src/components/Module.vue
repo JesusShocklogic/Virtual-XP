@@ -16,7 +16,7 @@ import { Options, Vue } from "vue-class-component";
     text: String,
   },
 })
-export default class Button extends Vue {
+export default class Module extends Vue {
   icon!: string;
   text!: string;
 }
