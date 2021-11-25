@@ -1,22 +1,5 @@
 <template>
-  <div class="bg-bgcolor h-screen">
-    <header>
-      <Navbar></Navbar>
-    </header>
-    <main class="p-4">
-      <PasswordInput label="Password" v-model="inputValue"></PasswordInput>
-      <Input label="Hello" v-model="inputValue"></Input>
-      <Checkbox v-model="inputBool">
-        Hello
-        <a href="#">World</a>
-      </Checkbox>
-      <div id="nav">
-        <router-link to="/">Home</router-link>|
-        <router-link to="/about">About</router-link>
-      </div>
-      <router-view />
-    </main>
-  </div>
+  <router-view />
 </template>
 
 <script lang="ts">
