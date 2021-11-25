@@ -1,9 +1,7 @@
 <template>
-  <div class="button">
-    <button>
-      {{ text }}
-    </button>
-  </div>
+  <button class="button" @click="handleFunction">
+    {{ text }}
+  </button>
 </template>
 
 <script lang="ts">
@@ -16,6 +14,9 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class Button extends Vue {
   text!: string;
+  handleFunction = () => {
+    this.$emit("handleFunction");
+  };
 }
 </script>
 
