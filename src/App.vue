@@ -5,6 +5,10 @@
     </header>
     <main class="p-4">
       <Input label="Hello" v-model="inputValue"></Input>
+      <Checkbox v-model="inputBool">
+        Hello
+        <a href="#">World</a>
+      </Checkbox>
       <div id="nav">
         <router-link to="/">Home</router-link>|
         <router-link to="/about">About</router-link>
@@ -18,15 +22,18 @@
 import { Options, Vue } from "vue-class-component";
 import Navbar from "@/components/Navbar.vue";
 import Input from "@/components/Input.vue";
+import Checkbox from "./components/Checkbox.vue";
 
 @Options({
   components: {
     Navbar,
     Input,
+    Checkbox,
   },
 })
 export default class App extends Vue {
   inputValue = "World";
+  inputBool = true;
 }
 </script>
 
