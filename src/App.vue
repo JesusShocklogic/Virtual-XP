@@ -4,6 +4,7 @@
       <Navbar></Navbar>
     </header>
     <main class="p-4">
+      <PasswordInput label="Password" v-model="inputValue"></PasswordInput>
       <Input label="Hello" v-model="inputValue"></Input>
       <Checkbox v-model="inputBool">
         Hello
@@ -23,12 +24,14 @@ import { Options, Vue } from "vue-class-component";
 import Navbar from "@/components/Navbar.vue";
 import Input from "@/components/Input.vue";
 import Checkbox from "./components/Checkbox.vue";
+import PasswordInput from "./components/PasswordInput.vue";
 
 @Options({
   components: {
     Navbar,
     Input,
     Checkbox,
+    PasswordInput,
   },
 })
 export default class App extends Vue {
