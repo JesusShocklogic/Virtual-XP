@@ -1,5 +1,5 @@
 <template>
-  <button class="button" @click="handleFunction">
+  <button class="button" :disabled="!enabled" @click="handleFunction">
     {{ text }}
   </button>
 </template>
@@ -10,17 +10,23 @@ import { Options, Vue } from "vue-class-component";
 @Options({
   props: {
     text: String,
+    enabled: Boolean,
   },
 })
 export default class Button extends Vue {
   text!: string;
-  handleFunction = () => {
-    this.$emit("handleFunction");
-  };
+  enabled!: boolean;
+  handleFunction = () => this.$emit("handleFunction");
+
+  mounted() {
+    if (!this.enabled) {
+      const button = document.querySelector(".button");
+      button?.classList.add("disabled");
+    }
+  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="postcss">
 button {
   @apply py-4;
@@ -34,5 +40,10 @@ button {
 
 button:hover {
   @apply bg-main-hover;
+}
+
+.disabled {
+  @apply opacity-50;
+  @apply cursor-not-allowed;
 }
 </style>
