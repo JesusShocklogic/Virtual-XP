@@ -1,10 +1,8 @@
 <template>
-  <div class="module">
-    <button>
-      <img :src="icon" />
-      <div>{{ text }}</div>
-    </button>
-  </div>
+  <button class="module" @click="handleFunction">
+    <img :src="icon" />
+    <div>{{ text }}</div>
+  </button>
 </template>
 
 <script lang="ts">
@@ -19,6 +17,9 @@ import { Options, Vue } from "vue-class-component";
 export default class Module extends Vue {
   icon!: string;
   text!: string;
+  handleFunction = () => {
+    this.$emit("handleFunction");
+  };
 }
 </script>
 
