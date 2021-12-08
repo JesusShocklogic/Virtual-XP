@@ -1,6 +1,6 @@
 <template>
-  <button class="module" :disabled="!enabled" @click="handleFunction">
-    <img :src="icon" />
+  <button class="module">
+    <slot></slot>
     <div>{{ text }}</div>
   </button>
 </template>
@@ -10,28 +10,16 @@ import { Options, Vue } from "vue-class-component";
 
 @Options({
   props: {
-    icon: String,
     text: String,
-    enabled: Boolean,
   },
 })
 export default class Module extends Vue {
-  icon!: string;
   text!: string;
-  enabled!: boolean;
-  handleFunction = () => this.$emit("handleFunction");
-
-  mounted() {
-    if (!this.enabled) {
-      const button = document.querySelector(".module");
-      button?.classList.add("disabled");
-    }
-  }
 }
 </script>
 
-<style scoped lang="postcss">
-button {
+<style lang="postcss">
+.module {
   @apply py-4;
   @apply px-3;
   @apply w-full;
@@ -43,17 +31,17 @@ button {
   color: white;
 }
 
-button:hover {
+.module:hover {
   @apply bg-main-hover;
 }
 
-img {
+.module img {
   @apply py-1;
   @apply m-auto;
   @apply max-h-20;
 }
 
-.disabled {
+.module.disabled {
   @apply opacity-50;
   @apply cursor-not-allowed;
 }
