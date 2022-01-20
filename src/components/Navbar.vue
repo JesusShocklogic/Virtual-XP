@@ -82,15 +82,12 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class Navbar extends Vue {
   hamburgerClicked() {
-    console.log("Hamburger Clicked");
     this.$emit("hamburgerClicked");
   }
   userProfileClicked() {
-    console.log("User Profile Clicked");
     this.$emit("userProfileClicked");
   }
   homeClicked() {
-    console.log("Home Clicked");
     this.$emit("homeClicked");
   }
 }

@@ -1,10 +1,10 @@
 <template>
-  <div class="body">
+  <div class="body" v-touch:swipe.left="hide" v-touch:swipe.right="show">
     <header>
-      <Navbar></Navbar>
+      <Navbar @hamburgerClicked="show"></Navbar>
     </header>
     <main>
-      <router-view />
+      <router-view v-model:hamburgerToggled="hamburgerToggled"/>
     </main>
   </div>
 </template>
@@ -21,10 +21,21 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import Navbar from "./Navbar.vue";
+
 @Options({
   components: {
     Navbar,
   },
 })
-export default class NavbarLayout extends Vue {}
+export default class NavbarLayout extends Vue {
+  hamburgerToggled = false
+
+  hide() {
+    this.hamburgerToggled = false
+  }
+
+  show() {
+    this.hamburgerToggled = true
+  }
+}
 </script>
