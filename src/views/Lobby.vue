@@ -3,19 +3,19 @@
     <Card>
       <div class="grid grid-cols-2 gap-4">
         <Module text="Live Now" class="col-span-2">
-          <img src="../assets/examples/antenna.svg" />
+          <img src="../assets/main-stage.svg" />
         </Module>
         <Module text="Programme">
-          <img src="../assets/examples/antenna.svg" />
+          <img src="../assets/programme.svg" />
         </Module>
         <Module text="Speakers">
-          <img src="../assets/examples/antenna.svg" />
+          <img src="../assets/speaker.svg" />
         </Module>
         <Module text="Exhibition">
-          <img src="../assets/examples/antenna.svg" />
+          <img src="../assets/exhibition.svg" />
         </Module>
         <Module text="Networking">
-          <img src="../assets/examples/antenna.svg" />
+          <img src="../assets/networking.svg" />
         </Module>
       </div>
     </Card>
