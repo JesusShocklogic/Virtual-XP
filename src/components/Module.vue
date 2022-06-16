@@ -1,22 +1,17 @@
+<script setup lang="ts">
+type Props = {
+  text: string
+}
+const props = defineProps<Props>(),
+      text = props.text
+</script>
+
 <template>
   <button class="module">
     <slot></slot>
     <div>{{ text }}</div>
   </button>
 </template>
-
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-
-@Options({
-  props: {
-    text: String,
-  },
-})
-export default class Module extends Vue {
-  text!: string;
-}
-</script>
 
 <style lang="postcss">
 .module {

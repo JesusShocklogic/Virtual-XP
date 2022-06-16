@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import Navbar from "./Navbar.vue";
+import { ref } from "vue";
+
+const hamburgerToggled = ref(false),
+      hide = () => hamburgerToggled.value = false,
+      show = () => hamburgerToggled.value = true
+
+</script>
+
 <template>
   <div class="body" v-touch:swipe.left="hide" v-touch:swipe.right="show">
     <header>
@@ -17,25 +27,3 @@
   @apply flex-auto;
 }
 </style>
-
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import Navbar from "./Navbar.vue";
-
-@Options({
-  components: {
-    Navbar,
-  },
-})
-export default class NavbarLayout extends Vue {
-  hamburgerToggled = false
-
-  hide() {
-    this.hamburgerToggled = false
-  }
-
-  show() {
-    this.hamburgerToggled = true
-  }
-}
-</script>

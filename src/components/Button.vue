@@ -1,31 +1,26 @@
-<template>
-  <button class="button" :disabled="!enabled" @click="handleFunction">
-    {{ text }}
-  </button>
-</template>
+<script setup lang="ts">
+import { ref } from "vue";
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
+type Props = {
+     text: string,
+     enabled: boolean
+ }
 
-@Options({
-  props: {
-    text: String,
-    enabled: Boolean,
-  },
-})
-export default class Button extends Vue {
-  text!: string;
-  enabled!: boolean;
-  handleFunction = () => this.$emit("handleFunction");
+const props = defineProps<Props>(),
+      button = ref<HTMLButtonElement>(),
+      emit = defineEmits<{ (e: 'handleFunction'): void }>(),
+      handleFunction = () => emit("handleFunction")
 
-  mounted() {
-    if (!this.enabled) {
-      const button = document.querySelector(".button");
-      button?.classList.add("disabled");
-    }
-  }
+if (!props.enabled) {
+  button.value?.classList.add("disabled");
 }
 </script>
+
+<template>
+    <button class="button" ref="button" :disabled="!enabled" @click="handleFunction">
+        {{ text }}
+    </button>
+</template>
 
 <style scoped lang="postcss">
 button {

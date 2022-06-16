@@ -1,19 +1,15 @@
+<script setup lang="ts">
+ type Props = {
+   title: string
+   text: string
+ }
+
+ const props = defineProps<Props>()
+</script>
+
 <template>
   <div class="title">{{ text }}</div>
 </template>
-
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-
-@Options({
-  props: {
-    text: String,
-  },
-})
-export default class Title extends Vue {
-  text!: string;
-}
-</script>
 
 <style scoped lang="postcss">
 div {

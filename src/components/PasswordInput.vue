@@ -1,3 +1,31 @@
+<script setup lang="ts">
+import { ref, toRef } from "vue";
+
+type Props = {
+   modelValue: string
+   label: string
+}
+
+const props = defineProps<Props>(),
+      val = toRef(props, 'modelValue'),
+      passwordVisible = ref(false),
+      animate = ref(false),
+      input = ref<HTMLInputElement>(),
+      container = ref<HTMLDivElement>(),
+      emit = defineEmits<{ (e: "update:modelValue", arg: string): void }>(),
+      showPassword = () => passwordVisible.value = !passwordVisible.value,
+      triggerAnimation = () => {
+        animate.value = true
+        input.value?.focus()
+      },
+      returnToStale = () => {
+        if (val.value == "" && container.value && container.value.matches(":hover"))
+        animate.value = false
+      },
+      handleInput = () => {
+        emit("update:modelValue", val.value)
+      }
+</script>
 <template>
   <div
     @click="triggerAnimation()"
@@ -63,51 +91,3 @@ input {
   @apply opacity-100;
 }
 </style>
-
-<script lang="ts">
-import { Options, prop, Vue, WithDefault } from "vue-class-component";
-
-class PasswordInputProps {
-  modelValue: string = prop({ required: true });
-  label: string = prop({ required: true });
-  visible: WithDefault<boolean> = prop({ default: false, required: false });
-}
-
-@Options({
-  emits: ["update:modelValue"],
-})
-export default class PasswordInput extends Vue.with(PasswordInputProps) {
-  label = "";
-  val = "";
-  animate = false;
-  passwordVisible = false;
-
-  created() {
-    this.passwordVisible = this.visible?.valueOf();
-  }
-
-  mounted() {
-    this.val = this.modelValue;
-    if (this.val != "") this.triggerAnimation();
-  }
-
-  showPassword() {
-    this.passwordVisible = !this.passwordVisible;
-  }
-
-  triggerAnimation() {
-    this.animate = true;
-    let input: HTMLInputElement = this.$refs.input as HTMLInputElement;
-    input.focus();
-  }
-
-  returnToStale() {
-    let container: HTMLDivElement = this.$refs.container as HTMLDivElement;
-    if (this.val == "" && !container.matches(":hover")) this.animate = false;
-  }
-
-  handleInput() {
-    this.$emit("update:modelValue", this.val);
-  }
-}
-</script>

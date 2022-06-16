@@ -1,3 +1,14 @@
+<script setup lang="ts">
+const emit = defineEmits<{
+   (e: "hamburgerClicked"): void,
+   (e: "userProfileClicked"): void,
+   (e: "homeClicked"): void,
+ }>(),
+      hamburgerClicked = () => emit("hamburgerClicked"),
+      userProfileClicked = () => emit("userProfileClicked"),
+      homeClicked = () => emit("homeClicked")
+</script>
+
 <template>
   <div class="w-full bg-card px-4 py-1 shadow-md grid grid-cols-3">
     <div class="hamburger p-3">
@@ -74,21 +85,3 @@
   height: 40px;
 }
 </style>
-
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-@Options({
-  emits: ["hamburgerClicked", "userProfileClicked", "homeClicked"],
-})
-export default class Navbar extends Vue {
-  hamburgerClicked() {
-    this.$emit("hamburgerClicked");
-  }
-  userProfileClicked() {
-    this.$emit("userProfileClicked");
-  }
-  homeClicked() {
-    this.$emit("homeClicked");
-  }
-}
-</script>>

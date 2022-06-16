@@ -1,3 +1,16 @@
+<script setup lang="ts">
+import Button from "../components/Button.vue";
+import Checkbox from "../components/Checkbox.vue";
+import Input from "../components/Input.vue";
+import PasswordInput from "../components/PasswordInput.vue";
+import { ref } from "vue";
+
+const email = ref(""),
+      name = ref(""),
+      password = ref(""),
+      agreed = ref(false)
+
+</script>
 <template>
   <div class="flex flex-col p-8 gap-8">
     <img src="../assets/logoipsum-logo-30.svg" class="py-8 px-14" />
@@ -25,26 +38,3 @@
   @apply prose-normal-text font-extrabold !important;
 }
 </style>
-
-<script lang="ts">
-import Button from "@/components/Button.vue";
-import Checkbox from "@/components/Checkbox.vue";
-import Input from "@/components/Input.vue";
-import PasswordInput from "@/components/PasswordInput.vue";
-import { Options, Vue } from "vue-class-component";
-
-@Options({
-  components: {
-    Input,
-    PasswordInput,
-    Checkbox,
-    Button,
-  },
-})
-export default class CreateAccount extends Vue {
-  email = "";
-  name = "";
-  password = "";
-  agreed = false;
-}
-</script>

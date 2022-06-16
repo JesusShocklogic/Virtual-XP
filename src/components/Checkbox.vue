@@ -1,3 +1,19 @@
+<script setup lang="ts">
+import { ref, toRef } from "vue";
+
+type Props = {
+   modelValue: boolean
+}
+
+const props = defineProps<Props>(),
+      checked = toRef(props, 'modelValue'),
+      emit = defineEmits<{ (e: "update:modelValue", val: boolean): void }>(),
+      toggleChecked = () => {
+        checked.value = !checked.value
+        emit("update:modelValue", checked.value)
+      }
+</script>
+
 <template>
   <div @click="toggleChecked()" class="prose-small-text flex flex-row gap-4">
     <div class="checkbox" :class="checked ? 'checked' : ''">
@@ -45,25 +61,3 @@
   @apply text-white text-sm leading-none opacity-100 visible;
 }
 </style>
-
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-
-class CheckboxProps {
-  modelValue = false;
-}
-
-@Options({
-  emits: ["update:modelValue"],
-})
-export default class Checkbox extends Vue.with(CheckboxProps) {
-  checked = false;
-  created() {
-    this.checked = this.modelValue;
-  }
-  toggleChecked() {
-    this.checked = !this.checked;
-    this.$emit("update:modelValue", this.checked);
-  }
-}
-</script>

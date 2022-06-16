@@ -2,27 +2,6 @@
   <router-view />
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import Navbar from "@/components/Navbar.vue";
-import Input from "@/components/Input.vue";
-import Checkbox from "./components/Checkbox.vue";
-import PasswordInput from "./components/PasswordInput.vue";
-
-@Options({
-  components: {
-    Navbar,
-    Input,
-    Checkbox,
-    PasswordInput,
-  },
-})
-export default class App extends Vue {
-  inputValue = "World";
-  inputBool = true;
-}
-</script>
-
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -34,7 +13,6 @@ export default class App extends Vue {
 
 #nav {
   padding: 30px;
-
   a {
     font-weight: bold;
     color: #2c3e50;

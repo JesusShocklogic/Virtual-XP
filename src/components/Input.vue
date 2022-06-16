@@ -1,3 +1,28 @@
+<script setup lang="ts">
+import { ref, toRef } from "vue";
+
+type Props = {
+  modelValue: string,
+  label: string
+}
+
+const props = defineProps<Props>(),
+      emit = defineEmits<{ (e: "update:modelValue", val: string): void }>(),
+      val = toRef(props, 'modelValue'),
+      animate = ref(false),
+      input = ref<HTMLInputElement>(),
+      container = ref<HTMLDivElement>(),
+      triggerAnimation = () => {
+        animate.value = true
+        input.value?.focus()
+      },
+      returnToStale = () => {
+        if (val.value == "" && container.value && !container.value.matches(":hover"))
+          animate.value = true
+      },
+      handleInput = () => emit("update:modelValue", val.value)
+</script>
+
 <template>
   <div
     @click="triggerAnimation()"
@@ -38,41 +63,3 @@ input {
   opacity: 1 !important;
 }
 </style>
-
-<script lang="ts">
-import { Options, prop, Vue } from "vue-class-component";
-
-class InputProps {
-  modelValue: string = prop({ required: true });
-  label: string = prop({ required: true });
-}
-
-@Options({
-  emits: ["update:modelValue"],
-})
-export default class Input extends Vue.with(InputProps) {
-  label = "";
-  val = "";
-  animate = false;
-
-  mounted() {
-    this.val = this.modelValue;
-    if (this.val != "") this.triggerAnimation();
-  }
-
-  triggerAnimation() {
-    this.animate = true;
-    let input: HTMLInputElement = this.$refs.input as HTMLInputElement;
-    input.focus();
-  }
-
-  returnToStale() {
-    let container: HTMLDivElement = this.$refs.container as HTMLDivElement;
-    if (this.val == "" && !container.matches(":hover")) this.animate = false;
-  }
-
-  handleInput() {
-    this.$emit("update:modelValue", this.val);
-  }
-}
-</script>

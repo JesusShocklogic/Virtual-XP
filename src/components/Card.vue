@@ -4,15 +4,6 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-
-@Options({
-  props: {},
-})
-export default class Card extends Vue {}
-</script>
-
 <style scoped lang="postcss">
 div {
   @apply py-5;

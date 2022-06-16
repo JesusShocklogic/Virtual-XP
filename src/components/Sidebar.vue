@@ -1,3 +1,16 @@
+<script setup lang="ts">
+import { computed } from "vue";
+
+type Props = {
+    toggled: boolean
+}
+
+const props = defineProps<Props>(),
+      emit = defineEmits<{ (e: 'hide'): void }>(),
+      isToggled = computed(() => props.toggled),
+      hide = () => emit('hide')
+</script>
+
 <template>
     <transition name="slide-sidebar">
         <div v-if="isToggled" class="sidebar">
@@ -40,7 +53,7 @@
         </div>
     </transition>
     <transition name="backdrop-appear">
-        <div v-if="isToggled" @click="$emit('hide')" class="backdrop"></div>
+        <div v-if="isToggled" @click="hide()" class="backdrop"></div>
     </transition>
 </template>
 
@@ -109,22 +122,3 @@
         @apply absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-25 z-40;
     }
 </style>
-
-<script lang="ts">
-import { Options, prop, Vue, WithDefault } from "vue-class-component";
-class SidebarProps {
-    toggled: boolean = prop({ required: true })
-}
-
-@Options({
-    components: {},
-    emits: [
-        'hide'
-    ]
-})
-export default class Sidebar extends Vue.with(SidebarProps) {
-    get isToggled() {
-        return this.toggled
-    }
-}
-</script>

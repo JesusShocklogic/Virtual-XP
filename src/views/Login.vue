@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import Button from "../components/Button.vue";
+import Input from "../components/Input.vue";
+import PasswordInput from "../components/PasswordInput.vue";
+import { ref } from "vue";
+
+const email = ref(""),
+      password = ref("")
+</script>
+
 <template>
   <div class="flex flex-col p-8 gap-8">
     <img src="../assets/logoipsum-logo-30.svg" class="py-8 px-14" />
@@ -31,22 +41,3 @@
   @apply text-main font-bold;
 }
 </style>
-
-<script lang="ts">
-import Button from "@/components/Button.vue";
-import Input from "@/components/Input.vue";
-import PasswordInput from "@/components/PasswordInput.vue";
-import { Options, Vue } from "vue-class-component";
-
-@Options({
-  components: {
-    Button,
-    Input,
-    PasswordInput,
-  },
-})
-export default class Login extends Vue {
-  email = "";
-  password = "";
-}
-</script>
