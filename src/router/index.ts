@@ -1,43 +1,60 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Basic',
-    component: () => import(/* webpackChunkName: "navbarLayout" */ "../components/NavbarLayout.vue"),
+    path: "/",
+    name: "Basic",
+    component: () =>
+      import(
+        /* webpackChunkName: "navbarLayout" */ "../components/NavbarLayout.vue"
+      ),
     children: [
       {
-        path: '/lobby',
-        name: 'Lobby',
-        component: () => import(/* webpackChunkName: "lobby" */'../views/Lobby.vue')
+        path: "/lobby",
+        name: "Lobby",
+        component: () =>
+          import(/* webpackChunkName: "lobby" */ "../views/Lobby.vue"),
       },
-    ]
+      {
+        path: "/speakers",
+        name: "Speakers",
+        component: () =>
+          import(/* webpackChunkName: "lobby" */ "../views/Speakers.vue"),
+      },
+    ],
   },
   {
-    path: '/auth',
-    name: 'Auth',
+    path: "/auth",
+    name: "Auth",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "fullPageLayout" */ '../components/FullPageLayout.vue'),
+    component: () =>
+      import(
+        /* webpackChunkName: "fullPageLayout" */ "../components/FullPageLayout.vue"
+      ),
     children: [
       {
-        path: 'login',
-        name: 'Login',
-        component: () => import(/* webpackChunkName: "login"*/ "../views/Login.vue")
+        path: "login",
+        name: "Login",
+        component: () =>
+          import(/* webpackChunkName: "login"*/ "../views/Login.vue"),
       },
       {
-        path: 'register',
-        name: 'Register',
-        component: () => import(/* webpackChunkName: "register"*/ "../views/CreateAccount.vue")
-      }
-    ]
-  }
-]
+        path: "register",
+        name: "Register",
+        component: () =>
+          import(
+            /* webpackChunkName: "register"*/ "../views/CreateAccount.vue"
+          ),
+      },
+    ],
+  },
+];
 
 const router = createRouter({
-  history: createWebHistory('/'),
-  routes
-})
+  history: createWebHistory("/"),
+  routes,
+});
 
-export default router
+export default router;
