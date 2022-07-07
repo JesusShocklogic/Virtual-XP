@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import {requiresLogin} from "./auth/guards";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -7,9 +8,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "navbarLayout" */ "../components/NavbarLayout.vue"),
     children: [
       {
-        path: '/lobby',
+        path: '',
         name: 'Lobby',
-        component: () => import(/* webpackChunkName: "lobby" */'../views/Lobby.vue')
+        component: () => import(/* webpackChunkName: "lobby" */'../views/Lobby.vue'),
+        beforeEnter: [requiresLogin]
       },
     ]
   },
@@ -36,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/'),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
 
