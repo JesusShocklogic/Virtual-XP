@@ -62,15 +62,25 @@ const props = defineProps<Props>(),
                 src="../assets/start-rounded-outline.svg"
               />
               <div class="font-semibold">Lorem ipsum dolor sit amet...</div>
-              <div class="tags">
-                <div>Main Stage</div>
-                <div>tag no. 2</div>
+              <div class="py-2">
+                <button class="text-xs px-3 py-1 m-1 rounded-full purple-btn">
+                  Main Stage
+                </button>
+                <button class="text-xs px-3 py-1 m-1 rounded-full green-btn">
+                  tag no. 2
+                </button>
               </div>
-              <div class="time">08:00 - 09:00</div>
-              <div class="speakers">
-                Alicia Herbert, Naomi Rayner, Tom Lisboa...
+              <div class="flex">
+                <img src="../assets/clock-solid.svg" />
+                <span class="px-3">08:00 - 09:00</span>
               </div>
-              <button>View recording</button>
+              <div class="flex">
+                <img src="../assets/user-solid.svg" />
+                <span class="px-3">Alicia Herbert, Naomi Rayne... </span>
+              </div>
+              <div class="px-2 py-4">
+                <button class="recording-btn">View recording</button>
+              </div>
             </div>
           </div>
         </div>
@@ -158,5 +168,25 @@ const props = defineProps<Props>(),
   right: 0;
   cursor: pointer;
   @apply h-7 w-7;
+}
+.purple-btn {
+  background-color: #4c28b5;
+  color: white;
+}
+.green-btn {
+  background-color: #1aaa4a;
+  color: white;
+}
+.recording-btn {
+  border-radius: 5px;
+  background-color: #4c28b5;
+  color: white;
+  width: 100%;
+  font-family: Segoe-UI-bold;
+  @apply text-lg;
+  @apply py-2;
+}
+.recording-btn:hover {
+  background-color: #341492;
 }
 </style>
