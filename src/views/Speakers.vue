@@ -19,11 +19,13 @@ const sections = [
     title: "Main speakers",
     speakers: [
       {
+        id: 1,
         name: "Alicia Herbert",
         org: "FCDO",
         position: "Director for Education",
       },
       {
+        id: 2,
         name: "Naomi Rayner",
         org: "Foreign, Commonwealth and...",
         position: "Head of The Scholarship",
@@ -34,11 +36,13 @@ const sections = [
     title: "Becoming Chevening Alumni",
     speakers: [
       {
+        id: 3,
         name: "Tom Lisboa",
         org: "Drops Cultural",
         position: "Creative director",
       },
       {
+        id: 4,
         name: "Alicia Herbert",
         org: "FCDO",
         position: "Director for Education",
@@ -49,11 +53,13 @@ const sections = [
     title: "Regional Sessions",
     speakers: [
       {
+        id: 5,
         name: "Naomi Rayner",
         org: "Foreign, Commonwealth and",
         position: "Head of The Scholarship",
       },
       {
+        id: 6,
         name: "Tom Lisboa",
         org: "Drops Cultural",
         position: "Creative director",

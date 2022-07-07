@@ -18,8 +18,12 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/speakers",
         name: "Speakers",
-        component: () =>
-          import(/* webpackChunkName: "lobby" */ "../views/Speakers.vue"),
+        component: () => import("../views/Speakers.vue"),
+      },
+      {
+        path: "/speaker",
+        name: "Speaker",
+        component: () => import("../views/Speaker.vue"),
       },
     ],
   },
