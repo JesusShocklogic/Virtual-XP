@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import {ref, toRef} from "vue";
 
 type Props = {
      text: string,
@@ -9,15 +9,18 @@ type Props = {
 const props = defineProps<Props>(),
       button = ref<HTMLButtonElement>(),
       emit = defineEmits<{ (e: 'handleFunction'): void }>(),
-      handleFunction = () => emit("handleFunction")
+      handleFunction = () => emit("handleFunction"),
+      enabled = toRef(props, "enabled")
 
-if (!props.enabled) {
+console.log(enabled.value)
+
+if (!enabled.value) {
   button.value?.classList.add("disabled");
 }
 </script>
 
 <template>
-    <button class="button" ref="button" :disabled="!enabled" @click="handleFunction">
+    <button class="button" :class="{ disabled: !enabled }" ref="button" :disabled="!enabled" @click="handleFunction">
         {{ text }}
     </button>
 </template>

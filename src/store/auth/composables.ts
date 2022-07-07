@@ -14,7 +14,7 @@ export const useAuthInfo = () => {
     const store = useStore<StoreState>()
 
     return {
-        id: store.state.auth.id,
-        email: store.state.auth.email
+        id: store.state.authModule.id,
+        email: store.state.authModule.email
     }
 }

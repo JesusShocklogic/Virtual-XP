@@ -2,6 +2,7 @@ import {Module} from "vuex";
 import {StoreState} from "../index";
 import {getEmail, getId} from "./getters";
 import {setCredentials} from "./mutations";
+import {login, logout} from "./actions";
 
 export type Credentials = {
     id: number
@@ -19,6 +20,7 @@ export const authModule: Module<AuthenticationState, StoreState> = {
         setCredentials
     },
     actions: {
-
+        login,
+        logout
     }
 }
