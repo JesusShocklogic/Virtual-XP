@@ -3,9 +3,12 @@ import {requiresLogin} from "./auth/guards";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Basic',
-    component: () => import(/* webpackChunkName: "navbarLayout" */ "../components/NavbarLayout.vue"),
+    path: "/",
+    name: "Basic",
+    component: () =>
+      import(
+        /* webpackChunkName: "navbarLayout" */ "../components/NavbarLayout.vue"
+      ),
     children: [
       {
         path: '',
@@ -13,33 +16,50 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import(/* webpackChunkName: "lobby" */'../views/Lobby.vue'),
         beforeEnter: [requiresLogin]
       },
-    ]
+      {
+        path: "/speakers",
+        name: "Speakers",
+        component: () => import("../views/Speakers.vue"),
+      },
+      {
+        path: "/speaker",
+        name: "Speaker",
+        component: () => import("../views/Speaker.vue"),
+      },
+    ],
   },
   {
-    path: '/auth',
-    name: 'Auth',
+    path: "/auth",
+    name: "Auth",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "fullPageLayout" */ '../components/FullPageLayout.vue'),
+    component: () =>
+      import(
+        /* webpackChunkName: "fullPageLayout" */ "../components/FullPageLayout.vue"
+      ),
     children: [
       {
-        path: 'login',
-        name: 'Login',
-        component: () => import(/* webpackChunkName: "login"*/ "../views/Login.vue")
+        path: "login",
+        name: "Login",
+        component: () =>
+          import(/* webpackChunkName: "login"*/ "../views/Login.vue"),
       },
       {
-        path: 'register',
-        name: 'Register',
-        component: () => import(/* webpackChunkName: "register"*/ "../views/CreateAccount.vue")
-      }
-    ]
-  }
-]
+        path: "register",
+        name: "Register",
+        component: () =>
+          import(
+            /* webpackChunkName: "register"*/ "../views/CreateAccount.vue"
+          ),
+      },
+    ],
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
 
-export default router
+export default router;
