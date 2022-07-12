@@ -12,6 +12,35 @@ const props = defineProps<Props>(),
   { hamburgerToggled } = toRefs(props),
   emit = defineEmits<{ (e: "update:hamburgerToggled", val: boolean): void }>(),
   hide = () => emit("update:hamburgerToggled", false);
+
+const speaker = {
+  name: "Alicia Herbert",
+  organization: "FCDO",
+  position:
+    "Director for Education, Gender, Equality and Special Envoy on Gender Equality at the FCDO.",
+  about:
+    "Alicia Herbert OBE is the Director for Education, Gender, Equality and Special Envoy on Gender Equality at the FCDO. Alicia Herbert, OBE, has more than 20 years' experience in international development. She has worked with a huge range of organisations including multilaterals, academia and since 1999, the Department for International Development (DFID) now, the Foreign and Commonwealth Development Office (FCDO) She has previously held the post of Head of DFID Mozambique.",
+  contact: "loremipsum@email.com",
+  sessions: [
+    {
+      date: "18 AUG",
+      title: "Lorem ipsum dolor sit amet...",
+      tags: ["Main Stage", "tag no. 2"],
+      time: "08:00 - 09:00",
+      speakers: "Alicia Herbert, Naomi Rayner, Tom Lisboa...",
+      type: "past",
+      recording: "#",
+    },
+    {
+      date: "19 AUG",
+      title: "Consectetur adipiscing elit",
+      tags: ["tag no. 2", "tag no. 3"],
+      time: "10:30 - 11:00",
+      speakers: "Alicia Herbert",
+      type: "upcoming",
+    },
+  ],
+};
 </script>
 
 <template>
@@ -62,12 +91,12 @@ const props = defineProps<Props>(),
                 src="../assets/start-rounded-outline.svg"
               />
               <div class="font-semibold">Lorem ipsum dolor sit amet...</div>
-              <div class="py-2">
-                <button class="text-xs px-3 py-1 m-1 rounded-full purple-btn">
-                  Main Stage
+              <div class="flex gap-2 py-2">
+                <button class="text-xs px-3 py-1 my-1 rounded-full purple-btn">
+                  <span class="tag-circle">&#9679;</span> Main Stage
                 </button>
-                <button class="text-xs px-3 py-1 m-1 rounded-full green-btn">
-                  tag no. 2
+                <button class="text-xs px-3 py-1 my-1 rounded-full green-btn">
+                  <span class="tag-circle">&#9679;</span> tag no. 2
                 </button>
               </div>
               <div class="flex">
@@ -168,6 +197,11 @@ const props = defineProps<Props>(),
   right: 0;
   cursor: pointer;
   @apply h-7 w-7;
+}
+.tag-circle {
+  color: white;
+  font-size: 0.6rem;
+  vertical-align: top;
 }
 .purple-btn {
   background-color: #4c28b5;
