@@ -1,0 +1,15 @@
+DirectoryIndex index.php index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /sites
+  RewriteRule ^mobile/index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /mobile/index.html [L]
+</IfModule>
+
+<IfModule mod_mime.c>
+   # Manifest file
+   AddType application/manifest+json webmanifest
+</IfModule>
