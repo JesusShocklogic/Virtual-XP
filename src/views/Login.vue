@@ -17,7 +17,9 @@ const email = ref(""),
             })
             .catch(console.error)
       },
-      submitEnabled = computed(() => email.value != "" && password.value != "")
+      submitEnabled = computed(() => {
+        return email.value != "" && password.value != ""
+      })
 </script>
 
 <template>
@@ -31,7 +33,7 @@ const email = ref(""),
         <Button @click="onSubmit" text="Log in" class="submit-button" :enabled="submitEnabled"></Button>
         <span class="notice">
           Don't have an account?
-          <a href="#">Sign Up</a>
+          <router-link to="/auth/register">Sign Up</router-link>
         </span>
       </div>
     </div>

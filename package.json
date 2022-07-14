@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "vite",
     "build:watch": "vue-tsc --noEmit && vite build --watch",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && vite build --mode sites",
     "preview": "vite preview"
   },
   "dependencies": {
+    "vite-plugin-html": "^3.2.0",
     "vue": "^3.2.25",
     "vue-router": "^4.0.16",
     "vue3-touch-events": "^4.1.0",

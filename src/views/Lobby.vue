@@ -3,6 +3,7 @@ import Module from "../components/Module.vue";
 import Card from "../components/Card.vue";
 import Sidebar from "../components/Sidebar.vue";
 import { toRefs } from "vue";
+import {useRouter} from "vue-router";
 
 type Props = {
   hamburgerToggled: boolean
@@ -11,7 +12,9 @@ type Props = {
 const props = defineProps<Props>(),
       { hamburgerToggled } = toRefs(props),
       emit = defineEmits<{ (e: 'update:hamburgerToggled', val: boolean): void }>(),
-      hide = () => emit('update:hamburgerToggled', false)
+      router = useRouter(),
+      hide = () => emit('update:hamburgerToggled', false),
+      navigateToSpeakers = () => router.push({ name: 'Speakers' })
 </script>
 
 <template>
@@ -27,7 +30,7 @@ const props = defineProps<Props>(),
         <Module text="Programme">
           <img src="../assets/programme.svg" />
         </Module>
-        <Module text="Speakers">
+        <Module text="Speakers" @click="navigateToSpeakers">
           <img src="../assets/speaker.svg" />
         </Module>
         <Module text="Exhibition">

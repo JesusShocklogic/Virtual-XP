@@ -9,39 +9,39 @@ module.exports = {
             typography: {
                 'main-title': {
                     css: {
-                        fontSize: '32px',
+                        fontSize: 'var(--main-title-font-size)',
                     },
                 },
                 'button-text': {
                     css: {
-                        fontSize: '6vw',
-                        fontWeight: '700',
+                        fontSize: 'var(--button-text-font-size)',
+                        fontWeight: 'var(--button-text-font-weight)',
                     },
                 },
                 'cat-text': {
                     css: {
-                        fontSize: '24px',
+                        fontSize: 'var(--cat-text-font-size)',
                     },
                 },
                 'normal-text': {
                     css: {
-                        fontSize: '18px',
+                        fontSize: 'var(--normal-text-font-size)',
                     },
                 },
                 'small-text': {
                     css: {
-                        fontSize: '16px',
+                        fontSize: 'var(--small-text-font-size)',
                     },
                 },
             },
             colors: {
-                main: '#4c28b5',
-                'main-hover': '#341492',
-                bgcolor: '#ebf0f3',
-                card: '#ffffff',
-                text: '#202020',
-                subtle: '#6e6e6e',
-                'input-bg': '#361C800D'
+                main: 'var(--main-color)',
+                'main-hover': 'var(--main-hover-color)',
+                bgcolor: 'var(--background-color)',
+                card: 'var(--card-color)',
+                text: 'var(--text-color)',
+                subtle: 'var(--subtle-color)',
+                'input-bg': 'var(--input-background-color)'
             }
         },
     },

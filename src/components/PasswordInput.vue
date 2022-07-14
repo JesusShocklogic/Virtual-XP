@@ -20,7 +20,7 @@ const props = defineProps<Props>(),
       },
       returnToStale = () => {
         if (val.value == "" && container.value && container.value.matches(":hover"))
-        animate.value = false
+          animate.value = false
       },
       handleInput = () => {
         emit("update:modelValue", val.value)

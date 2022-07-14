@@ -8,6 +8,8 @@ const hamburgerToggled = ref(false),
 
 </script>
 
+<!-- /home/ 
+     /1 -->
 <template>
   <div class="body" v-touch:swipe.left="hide" v-touch:swipe.right="show">
     <header>
@@ -25,5 +27,6 @@ const hamburgerToggled = ref(false),
 }
 .body > main {
   @apply flex-auto;
+  background-color: rgb(235 240 243 / var(--tw-bg-opacity));
 }
 </style>

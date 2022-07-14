@@ -3,6 +3,7 @@ import Module from "../components/Module.vue";
 import Card from "../components/Card.vue";
 import Sidebar from "../components/Sidebar.vue";
 import { toRefs } from "vue";
+import {useRouter} from "vue-router";
 
 type Props = {
   hamburgerToggled: boolean;
@@ -11,9 +12,12 @@ type Props = {
 const props = defineProps<Props>(),
   { hamburgerToggled } = toRefs(props),
   emit = defineEmits<{ (e: "update:hamburgerToggled", val: boolean): void }>(),
-  hide = () => emit("update:hamburgerToggled", false);
+  hide = () => emit("update:hamburgerToggled", false),
+  router = useRouter(),
+  goBack = () => router.back(),
+  goToSpeakers = () => router.push({ name: 'Speaker' });
 
-//TODO remove this example when API is connected
+//TODO: remove this example when API is connected
 const sections = [
   {
     title: "Main speakers",
@@ -74,7 +78,7 @@ const sections = [
     <Sidebar :toggled="hamburgerToggled" @hide="hide" />
     <Card>
       <div class="title-section">
-        <img class="arrow" src="../assets/left-arrow-solid.svg" />
+        <img @click="goBack" class="arrow" src="../assets/left-arrow-solid.svg" />
         <span class="title font-bold">Speakers</span>
       </div>
       <div class="py-3">
@@ -87,6 +91,7 @@ const sections = [
           class="speaker-section"
           v-bind:key="speakerIndex"
           v-for="(speaker, speakerIndex) in section.speakers"
+          @click="goToSpeakers"
         >
           <div class="row-span-3">
             <img

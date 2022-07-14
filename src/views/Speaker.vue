@@ -3,6 +3,7 @@ import Module from "../components/Module.vue";
 import Card from "../components/Card.vue";
 import Sidebar from "../components/Sidebar.vue";
 import { toRefs } from "vue";
+import {useRouter} from "vue-router";
 
 type Props = {
   hamburgerToggled: boolean;
@@ -11,7 +12,9 @@ type Props = {
 const props = defineProps<Props>(),
   { hamburgerToggled } = toRefs(props),
   emit = defineEmits<{ (e: "update:hamburgerToggled", val: boolean): void }>(),
-  hide = () => emit("update:hamburgerToggled", false);
+  hide = () => emit("update:hamburgerToggled", false),
+  router = useRouter(),
+  goBack = () => router.back();
 </script>
 
 <template>
@@ -19,7 +22,7 @@ const props = defineProps<Props>(),
     <Sidebar :toggled="hamburgerToggled" @hide="hide" />
     <Card>
       <div class="title-section">
-        <img class="arrow" src="../assets/left-arrow-solid.svg" />
+        <img class="arrow" src="../assets/left-arrow-solid.svg" @click="goBack"/>
         <img class="star-speaker" src="../assets/star-rounded-fill.svg" />
         <img
           class="speaker-image m-auto"

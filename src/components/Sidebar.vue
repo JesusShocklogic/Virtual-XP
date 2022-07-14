@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import {useAuthOperations} from "../store/auth/composables";
+import {useRouter} from "vue-router";
 
 type Props = {
     toggled: boolean
@@ -8,7 +10,15 @@ type Props = {
 const props = defineProps<Props>(),
       emit = defineEmits<{ (e: 'hide'): void }>(),
       isToggled = computed(() => props.toggled),
-      hide = () => emit('hide')
+      { logout: doLogout } = useAuthOperations(),
+      router = useRouter(),
+      hide = () => emit('hide'),
+      logout = () => {
+        console.log("Logging out")
+        doLogout().then(() => {
+          router.push({ name: 'Login' })
+        })
+      }
 </script>
 
 <template>
@@ -32,10 +42,10 @@ const props = defineProps<Props>(),
                         <img class="item-icon" src="../assets/users-solid.svg"/>
                         Stages
                     </div>
-                    <div class="item">
+                    <router-link to="/speakers" @click="hide" class="item">
                         <img class="item-icon" src="../assets/concierge-bell-solid.svg"/>
                         Speakers
-                    </div>
+                    </router-link>
                     <div class="item">
                         <img class="item-icon" src="../assets/store-solid.svg"/>
                         Exhibition
@@ -44,7 +54,7 @@ const props = defineProps<Props>(),
                         <img class="item-icon" src="../assets/network-wired-solid.svg"/>
                         Networking
                     </div>
-                    <div class="item-logout">
+                    <div class="item-logout" @click="logout">
                         <img class="item-icon" src="../assets/sign-out-alt-solid.svg"/>
                         Logout
                     </div>
